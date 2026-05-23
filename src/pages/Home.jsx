@@ -94,14 +94,13 @@ export default function Home() {
           </div>
 
           <div className="mt-6">
-            <a
+ <a
   href="https://www.paypal.com/donate/?business=kingdommm.chris%40gmail.com"
   target="_blank"
   rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-6 py-2.5 font-heading text-sm rounded-lg transition-all"
+  style={{ border: "1px solid rgba(200,120,30,0.50)", color: "#d4944a", background: "rgba(0,0,0,0.45)", backdropFilter: "blur(6px)" }}
 >
-              className="inline-flex items-center gap-2 px-6 py-2.5 font-heading text-sm rounded-lg transition-all"
-              style={{ border: "1px solid rgba(200,120,30,0.50)", color: "#d4944a", background: "rgba(0,0,0,0.45)", backdropFilter: "blur(8px)" }}
-            >
               <Heart size={15} /> Partner / Sow
             </a>
           </div>
