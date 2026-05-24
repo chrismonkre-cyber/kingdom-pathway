@@ -32,7 +32,7 @@ export default function PageHero({ title, subtitle, children, showLogo = true, c
           <img
             src={KMM_LOGO}
             alt="KMM"
-            className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-5"
+            className="w-14 h-14 md:w-20 md:h-20 rounded-full mx-auto mb-5 mt-6 md:mt-0"
             style={{ boxShadow: "0 0 55px rgba(225,140,10,0.60), 0 0 20px rgba(200,110,10,0.35)", border: "2px solid rgba(235,172,38,0.65)" }}
           />
         )}
