@@ -7,7 +7,7 @@ export default function GlassCard({ children, className = "", onClick, hover = f
         background: "linear-gradient(135deg, rgba(72,10,20,0.76) 0%, rgba(36,5,12,0.82) 100%)",
         border: "1px solid rgba(205,132,28,0.35)",
         backdropFilter: "blur(16px)",
-        boxShadow: "0 0 22px rgba(120,28,8,0.18), 0 6px 32px rgba(0,0,0,0.70), inset 0 1px 0 rgba(225,162,36,0.12)",
+        boxShadow: "0 0 22px rgba(120,28,8,0.18), 0 6px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(225,162,36,0.12)",
       }}
       onMouseEnter={hover ? e => {
         e.currentTarget.style.border = "1px solid rgba(238,165,35,0.58)";
