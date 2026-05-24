@@ -2,9 +2,9 @@ export default function GlassCard({ children, className = "", onClick, hover = f
   return (
     <div
       onClick={onClick}
-      className={`rounded-xl p-5 ${hover ? "cursor-pointer transition-all duration-300" : ""} ${className}`}
+      className={`rounded-xl p-4 md:p-5 ${hover ? "cursor-pointer transition-all duration-300" : ""} ${className}`}
       style={{
-        background: "linear-gradient(135deg, rgba(52,8,16,0.92) 0%, rgba(28,4,10,0.96) 100%)",
+        background: "linear-gradient(135deg, rgba(72,10,20,0.76) 0%, rgba(36,5,12,0.82) 100%)",
         border: "1px solid rgba(205,132,28,0.35)",
         backdropFilter: "blur(16px)",
         boxShadow: "0 0 22px rgba(120,28,8,0.18), 0 6px 32px rgba(0,0,0,0.70), inset 0 1px 0 rgba(225,162,36,0.12)",
