@@ -26,15 +26,15 @@ export default function Home() {
           style={{ backgroundImage: `url(${HERO_BG})`, backgroundSize: "cover", backgroundPosition: "center 30%", backgroundRepeat: "no-repeat" }}
         />
         {/* Light overlay — keep the fire visible */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(5,2,1,0.38) 0%, rgba(8,3,1,0.10) 38%, rgba(5,2,1,0.88) 100%)" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, transparent 30%, rgba(5,2,1,0.55) 100%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(5,2,1,0.12) 0%, rgba(8,3,1,0.10) 38%, rgba(5,2,1,0.30) 100%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, transparent 30%, rgba(5,2,1,0.18) 100%)" }} />
         {/* Edge vignette only */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 55% at 50% 100%, rgba(140,55,3,0.30) 0%, transparent 55%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 55% at 50% 100%, rgba(140,55,3,0.10) 0%, transparent 55%)" }} />
         <EmberParticles count={20} />
 
         <div className="relative max-w-3xl mx-auto px-4 text-center py-24 z-10">
           {/* Strong dark radial halo — keeps lion/fire visible, halos the text group for readability */}
-          <div className="absolute inset-0 pointer-events-none rounded-3xl" style={{ background: "radial-gradient(ellipse 80% 85% at 50% 50%, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 55%, transparent 100%)", filter: "blur(18px)" }} />
+          <div className="absolute inset-0 pointer-events-none rounded-3xl" style={{ background: "radial-gradient(ellipse 80% 85% at 50% 50%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 55%, transparent 100%)", filter: "blur(18px)" }} />
           <img
             src={KMM_LOGO}
             alt="Kingdom Mandate Ministry"
