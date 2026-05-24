@@ -7,7 +7,7 @@ export default function PageHero({ title, subtitle, children, showLogo = true, c
   const bg = bgImage || DEFAULT_BG;
 
   return (
-    <section className={`relative overflow-hidden ${compact ? "py-16" : "py-24 md:py-32"}`}>
+    <section className={`relative overflow-hidden ${compact ? "py-12" : "pt-14 pb-10 md:pt-24 md:pb-20"}`}>
       {showBg && (
         <div
           className="absolute inset-0 pointer-events-none"
@@ -20,8 +20,8 @@ export default function PageHero({ title, subtitle, children, showLogo = true, c
         />
       )}
       {/* Overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(5,2,1,0.28) 0%, rgba(8,3,1,0.08) 40%, rgba(5,2,1,0.55) 100%)" }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, rgba(5,2,1,0.32) 100%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(5,2,1,0.18) 0%, rgba(8,3,1,0.08) 40%, rgba(5,2,1,0.35) 100%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, rgba(5,2,1,0.20) 100%)" }} />
       <EmberParticles count={10} />
       {showBg && (
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(5,2,1,0.35) 60%, rgba(5,2,1,0.65) 100%)" }} />
