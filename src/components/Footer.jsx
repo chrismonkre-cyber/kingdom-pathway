@@ -1,41 +1,57 @@
-import { Heart } from "lucide-react";
-
-const KMM_LOGO = "https://media.base44.com/images/public/user_69a2073c194ba1099feee8ab/55003ad81_logopng.png";
-const PAYPAL_URL = "https://www.paypal.com/donate/?business=kingdommm.chris%40gmail.com&currency_code=USD";
-
-const LINKS = [
-  { label: "Main Site", url: "https://kingdommandateministry.com" },
-  { label: "Bible Companion", url: "https://thebiblecompanion.online" },
-  { label: "Prayer Wall", url: "https://prayer.kingdommandateministry.com" },
-  { label: "Kingdom Fire", url: "https://fire.kingdommandateministry.com" },
-  { label: "YouTube", url: "https://www.youtube.com/@KingdomMandateMinistry" },
-  { label: "Contact", url: "mailto:kingdommm.chris@gmail.com" },
-];
+import { Link } from "react-router-dom";
+import { FOOTER_LINKS } from "../lib/resourceData";
+import { IMAGES } from "../lib/images";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-primary/15 bg-background/60 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-4 py-10 text-center">
-        <img src={KMM_LOGO} alt="KMM" className="w-12 h-12 rounded-full mx-auto mb-4 ring-1 ring-primary/30" />
-        <a
-          href={PAYPAL_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2 font-heading text-sm rounded-lg mb-6 transition-all"
-          style={{ border: "1px solid rgba(180,100,20,0.40)", color: "#d4944a", background: "rgba(80,20,5,0.25)" }}
-        >
-          <Heart size={14} /> Partner / Sow
-        </a>
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-6">
-          {LINKS.map((l) => (
-            <a key={l.label} href={l.url} target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-              {l.label}
-            </a>
-          ))}
+    <footer className="relative bg-black/80 backdrop-blur-lg border-t border-primary/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Logo & tagline */}
+        <div className="flex flex-col items-center mb-10">
+          <img
+            src={IMAGES.logo}
+            alt="Kingdom Mandate Ministry"
+            className="h-14 w-14 rounded-full object-cover border border-primary/40 mb-3"
+          />
+          <h3 className="font-heading text-xl font-bold text-primary mb-1">
+            Kingdom Pathway
+          </h3>
+          <p className="text-foreground/60 font-body text-sm text-center">
+            Find your next step. Follow the fire. Walk in the power of God.
+          </p>
         </div>
-        <p className="text-xs text-muted-foreground/70 leading-relaxed">
-          © 2026 Kingdom Mandate Ministry | Built by the Glory of GOD, for the Grace of GOD
-        </p>
+
+        {/* Links grid */}
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-10">
+          {FOOTER_LINKS.map((link) =>
+            link.url.startsWith("/") ? (
+              <Link
+                key={link.name}
+                to={link.url}
+                className="text-foreground/70 hover:text-primary text-sm font-body transition-colors"
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground/70 hover:text-primary text-sm font-body transition-colors"
+              >
+                {link.name}
+              </a>
+            )
+          )}
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-primary/15 pt-6">
+          <p className="text-center text-foreground/50 text-xs font-body">
+            © 2026 Kingdom Mandate Ministry | Built for the Glory of GOD, by the Grace of GOD
+          </p>
+        </div>
       </div>
     </footer>
   );

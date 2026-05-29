@@ -1,78 +1,101 @@
 import { useState } from "react";
-import { BookOpen, MessageSquare, Volume2, Flame, PenLine, ChevronLeft, ChevronRight } from "lucide-react";
-import PageHero from "../components/PageHero";
-import DAILY_STEPS from "../lib/dailyStepData";
-
-const DAILY_STEP_BG = "https://media.base44.com/images/public/6a0fab654128653e03e43d46/f1ead123e_3daily-step-fire-steps.png";
+import { IMAGES } from "../lib/images";
+import { DAILY_DEVOTIONS } from "../lib/pathwayData";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function DailyStep() {
-  const steps = Array.isArray(DAILY_STEPS) ? DAILY_STEPS : [];
-  const todayIndex = new Date().getDay() % (steps.length || 1);
-  const [index, setIndex] = useState(todayIndex);
-  const step = steps[index];
+  const today = Math.floor(Date.now() / 86400000) % DAILY_DEVOTIONS.length;
+  const [dayIndex, setDayIndex] = useState(today);
+  const devotion = DAILY_DEVOTIONS[dayIndex];
 
-  if (!step) return <PageHero title="Today's Kingdom Step" subtitle="Content loading..." />;
-
-  const prev = () => setIndex((index - 1 + steps.length) % steps.length);
-  const next = () => setIndex((index + 1) % steps.length);
-
-  const sections = [
-    { icon: BookOpen, title: "Scripture", content: step.scripture },
-    { icon: MessageSquare, title: "Encouragement", content: step.encouragement },
-    { icon: Volume2, title: "Prayer", content: step.prayer },
-    { icon: Flame, title: "Declaration", content: step.declaration, featured: true },
-    { icon: Flame, title: "Action Step", content: step.actionStep },
-    { icon: PenLine, title: "Journal Prompt", content: step.journalPrompt },
-  ];
+  const prev = () => setDayIndex((dayIndex - 1 + DAILY_DEVOTIONS.length) % DAILY_DEVOTIONS.length);
+  const next = () => setDayIndex((dayIndex + 1) % DAILY_DEVOTIONS.length);
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh", backgroundImage: `url(${DAILY_STEP_BG})`, backgroundSize: "cover", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(5,2,1,0.28) 0%, rgba(5,2,1,0.55) 35%, rgba(5,2,1,0.72) 100%)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <PageHero title="Today's Kingdom Step" subtitle="One step at a time. One day at a time. Walk in the power of God." compact showBg={false} />
-        <div className="h-px w-full" style={{ background: "linear-gradient(90deg, transparent, rgba(210,140,10,0.55), rgba(248,175,20,0.75), rgba(210,140,10,0.55), transparent)" }} />
+    <div className="relative min-h-screen">
+      <div className="fixed inset-0 -z-10">
+        <img src={IMAGES.daily} alt="" className="hidden md:block w-full h-full object-cover object-center" />
+        <img src={IMAGES.dailyMobile} alt="" className="md:hidden w-full h-full object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/45" />
+      </div>
 
-        <section className="px-4 pb-20">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex items-center justify-between mb-8 pt-8">
-              <button onClick={prev} className="p-2 rounded-lg transition-colors" style={{ border: "1px solid rgba(210,138,22,0.34)", color: "#f7cc45" }}>
-                <ChevronLeft size={20} />
-              </button>
-              <h2 className="font-heading text-2xl text-center" style={{ color: "#ffe44a", fontWeight: 900, textShadow: "0 0 30px rgba(255,210,30,0.80), 0 2px 10px rgba(0,0,0,0.95)" }}>
-                {step.title}
-              </h2>
-              <button onClick={next} className="p-2 rounded-lg transition-colors" style={{ border: "1px solid rgba(210,138,22,0.34)", color: "#f7cc45" }}>
-                <ChevronRight size={20} />
-              </button>
-            </div>
+      <div className="relative z-10 pt-28 pb-20 px-4">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary mb-3 drop-shadow-lg">
+            Daily Step
+          </h1>
+          <p className="font-body text-lg text-foreground/85 drop-shadow-md">
+            Today's encouragement for your walk with God.
+          </p>
+        </div>
 
-            <div className="flex justify-center gap-1.5 mb-8">
-              {steps.map((_, i) => (
-                <button key={i} onClick={() => setIndex(i)} className="w-2 h-2 rounded-full transition-all"
-                  style={{ background: i === index ? "#f7cc45" : "rgba(210,138,22,0.28)" }} />
-              ))}
-            </div>
-
-            <div className="space-y-4">
-              {sections.map((s, i) => (
-                <div key={i} className="rounded-xl p-5" style={{
-                  background: s.featured
-                    ? "linear-gradient(135deg, rgba(72,12,20,0.94) 0%, rgba(42,6,14,0.97) 100%)"
-                    : "linear-gradient(135deg, rgba(52,8,16,0.92) 0%, rgba(28,4,10,0.96) 100%)",
-                  border: s.featured ? "1px solid rgba(228,158,30,0.52)" : "1px solid rgba(205,132,28,0.32)",
-                  boxShadow: s.featured ? "0 0 28px rgba(185,88,10,0.25), 0 6px 32px rgba(0,0,0,0.72)" : "0 4px 24px rgba(0,0,0,0.65)",
-                  backdropFilter: "blur(16px)",
-                }}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <s.icon size={16} style={{ color: "#ffe44a" }} />
-                    <h3 className="font-heading text-sm font-bold" style={{ color: "#ffe44a" }}>{s.title}</h3>
-                  </div>
-                  <p className="text-amber-100/90 leading-relaxed text-sm">{s.content}</p>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-3xl mx-auto">
+          {/* Title */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6 text-center">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-primary">
+              {devotion.title}
+            </h2>
           </div>
-        </section>
+
+          {/* Scripture */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <h3 className="font-heading text-lg font-semibold text-primary mb-3">📖 Scripture</h3>
+            <p className="font-body text-foreground/90 text-lg leading-relaxed italic">
+              {devotion.scripture}
+            </p>
+          </div>
+
+          {/* Encouragement */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <h3 className="font-heading text-lg font-semibold text-primary mb-3">💡 Encouragement</h3>
+            <p className="font-body text-foreground/90 leading-relaxed">
+              {devotion.encouragement}
+            </p>
+          </div>
+
+          {/* Prayer */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <h3 className="font-heading text-lg font-semibold text-primary mb-3">🙏 Prayer</h3>
+            <p className="font-body text-foreground/90 leading-relaxed">
+              {devotion.prayer}
+            </p>
+          </div>
+
+          {/* Declaration */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <h3 className="font-heading text-lg font-semibold text-primary mb-3">🔥 Declaration</h3>
+            <p className="font-body text-foreground/90 leading-relaxed font-semibold">
+              {devotion.declaration}
+            </p>
+          </div>
+
+          {/* Action Step */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-8">
+            <h3 className="font-heading text-lg font-semibold text-primary mb-3">👣 Action Step</h3>
+            <p className="font-body text-foreground/90 leading-relaxed">
+              {devotion.actionStep}
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center justify-center gap-6">
+            <button
+              onClick={prev}
+              className="flex items-center gap-2 px-5 py-3 bg-black/50 backdrop-blur-sm border border-primary/30 rounded-lg text-foreground/80 hover:text-primary hover:border-primary/50 transition-all font-body"
+            >
+              <ChevronLeft className="h-5 w-5" /> Previous
+            </button>
+            <span className="text-foreground/50 font-body text-sm">
+              Day {dayIndex + 1} of {DAILY_DEVOTIONS.length}
+            </span>
+            <button
+              onClick={next}
+              className="flex items-center gap-2 px-5 py-3 bg-black/50 backdrop-blur-sm border border-primary/30 rounded-lg text-foreground/80 hover:text-primary hover:border-primary/50 transition-all font-body"
+            >
+              Next <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

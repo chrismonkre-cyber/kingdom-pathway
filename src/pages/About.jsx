@@ -1,57 +1,127 @@
-import { ExternalLink, Mail } from "lucide-react";
-import PageHero from "../components/PageHero";
-import GlassCard from "../components/GlassCard";
+import { IMAGES } from "../lib/images";
+import { RESOURCE_LINKS } from "../lib/resourceData";
+import { ExternalLink } from "lucide-react";
 
-const ABOUT_BG = "https://media.base44.com/images/public/6a0fab654128653e03e43d46/f1a9fc783_6about-throne-glory.png";
-
-const LINKS = [
-  { label: "Main Ministry Site", url: "https://kingdommandateministry.com" },
-  { label: "The Bible Companion", url: "https://thebiblecompanion.online" },
-  { label: "Kingdom Prayer Wall", url: "https://prayer.kingdommandateministry.com" },
-  { label: "Kingdom Fire Companion", url: "https://fire.kingdommandateministry.com" },
-  { label: "YouTube", url: "https://www.youtube.com/@KingdomMandateMinistry" },
+const QUICK_LINKS = [
+  "Kingdom Mandate Ministry",
+  "The Bible Companion",
+  "Kingdom Prayer Wall",
+  "Kingdom Fire Companion",
+  "Kingdom Declarations",
+  "YouTube Channel",
+  "Partner / Sow",
 ];
 
 export default function About() {
   return (
-    <div style={{ position: "relative", minHeight: "100vh", backgroundImage: `url(${ABOUT_BG})`, backgroundSize: "cover", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(5,2,1,0.28) 0%, rgba(5,2,1,0.55) 35%, rgba(5,2,1,0.72) 100%)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <PageHero title="About Kingdom Pathway" subtitle="Advancing the Kingdom through The Holy Spirit, Healing and Power." compact showBg={false} />
+    <div className="relative min-h-screen">
+      <div className="fixed inset-0 -z-10">
+        <img src={IMAGES.resources} alt="" className="hidden md:block w-full h-full object-cover object-center" />
+        <img src={IMAGES.resourcesMobile} alt="" className="md:hidden w-full h-full object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/45" />
+      </div>
 
-        <section className="px-4 pb-20">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <GlassCard>
-              <p className="text-amber-100/88 leading-relaxed text-sm mb-4">
-                Kingdom Pathway is a Kingdom Mandate Ministry resource created to help people take their next step with God through Scripture, prayer, declarations, journaling, and Spirit-filled direction.
-              </p>
-              <p className="text-amber-100/88 leading-relaxed text-sm">
-                Whether you are new to faith, walking through a difficult season, seeking purpose, or believing for breakthrough — this app is designed to meet you where you are and point you toward the power and promises of God.
-              </p>
-            </GlassCard>
-
-            <GlassCard>
-              <h3 className="font-heading font-bold text-lg mb-3" style={{ color: "#ffe44a" }}>Our Mission</h3>
-              <p className="text-amber-100/88 leading-relaxed text-sm italic">
-                {"Kingdom Mandate Ministry exists to advance the Kingdom through The Holy Spirit, Healing & Power."}
-              </p>
-            </GlassCard>
-
-            <GlassCard>
-              <h3 className="font-heading font-bold text-lg mb-4" style={{ color: "#ffe44a" }}>Connect With Us</h3>
-              <div className="space-y-2">
-                {LINKS.map((l) => (
-                  <a key={l.label} href={l.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-amber-100/72 hover:text-primary transition-colors">
-                    <ExternalLink size={14} style={{ color: "rgba(247,204,69,0.55)" }} /> {l.label}
-                  </a>
-                ))}
-                <a href="mailto:kingdommm.chris@gmail.com" className="flex items-center gap-2 text-sm text-amber-100/72 hover:text-primary transition-colors">
-                  <Mail size={14} style={{ color: "rgba(247,204,69,0.55)" }} /> kingdommm.chris@gmail.com
-                </a>
-              </div>
-            </GlassCard>
+      <div className="relative z-10 pt-28 pb-20 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <img
+              src={IMAGES.logo}
+              alt="Kingdom Mandate Ministry"
+              className="h-20 w-20 rounded-full object-cover border-2 border-primary/50 shadow-xl shadow-primary/20 mx-auto mb-6"
+            />
+            <h1 className="font-heading text-4xl sm:text-5xl font-bold text-primary mb-3 drop-shadow-lg">
+              About Kingdom Pathway
+            </h1>
+            <p className="font-body text-lg text-foreground/85 drop-shadow-md">
+              A guided next-step companion from Kingdom Mandate Ministry.
+            </p>
           </div>
-        </section>
+
+          {/* About copy */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <p className="font-body text-foreground/90 leading-relaxed text-lg mb-4">
+              Kingdom Pathway was created to help people take their next step with God through
+              Scripture, prayer, journaling, encouragement, and Spirit-filled direction.
+            </p>
+            <p className="font-body text-foreground/80 leading-relaxed">
+              Whether someone is new to faith, walking through a difficult season, seeking peace,
+              or needing healing, this app is designed to meet them where they are and point them
+              toward the power and promises of God.
+            </p>
+          </div>
+
+          {/* Ministry mission */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <h2 className="font-heading text-xl font-semibold text-primary mb-3">
+              Our Mission
+            </h2>
+            <p className="font-body text-foreground/85 leading-relaxed">
+              Kingdom Mandate Ministry exists to equip, empower, and release believers into their
+              God-given purpose. Through Scripture-based tools, Spirit-filled teaching, and practical
+              kingdom resources, we help people discover who they are in Christ and walk boldly in
+              the fire of His calling.
+            </p>
+          </div>
+
+          {/* Contact */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6">
+            <h2 className="font-heading text-xl font-semibold text-primary mb-3">
+              Get In Touch
+            </h2>
+            <p className="font-body text-foreground/80 mb-3">
+              We'd love to hear from you. Whether you have a prayer request, a testimony, or a question,
+              reach out anytime.
+            </p>
+            <a
+              href="mailto:kingdommm.chris@gmail.com"
+              className="inline-block text-primary hover:underline font-body font-medium"
+            >
+              kingdommm.chris@gmail.com
+            </a>
+          </div>
+
+          {/* Partner / Sow */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8 mb-6 text-center">
+            <h2 className="font-heading text-xl font-semibold text-primary mb-3">
+              Partner / Sow
+            </h2>
+            <p className="font-body text-foreground/80 mb-4">
+              Your generosity helps us continue building free Kingdom tools for the body of Christ.
+            </p>
+            <a
+              href="https://www.paypal.com/donate/?business=kingdommm.chris%40gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-lg shadow-lg shadow-primary/30 hover:brightness-110 transition-all"
+            >
+              Give / Partner
+            </a>
+          </div>
+
+          {/* Quick links */}
+          <div className="bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl p-6 sm:p-8">
+            <h2 className="font-heading text-xl font-semibold text-primary mb-4">
+              Explore the Ministry
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {QUICK_LINKS.map((name) => {
+                const link = RESOURCE_LINKS.find((r) => r.name === name);
+                if (!link) return null;
+                return (
+                  <a
+                    key={name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/25 rounded-lg text-foreground/80 hover:text-primary hover:border-primary/50 text-sm font-body transition-all"
+                  >
+                    {name} <ExternalLink className="h-3 w-3" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
