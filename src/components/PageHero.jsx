@@ -20,8 +20,8 @@ export default function PageHero({ title, subtitle, children, showLogo = true, c
         />
       )}
       {/* Overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(5,2,1,0.18) 0%, rgba(8,3,1,0.08) 40%, rgba(5,2,1,0.35) 100%)" }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, rgba(5,2,1,0.20) 100%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(5,2,1,0.35) 0%, rgba(8,3,1,0.25) 40%, rgba(5,2,1,0.45) 100%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, rgba(5,2,1,0.30) 100%)" }} />
       <EmberParticles count={10} />
       {showBg && (
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(5,2,1,0.35) 60%, rgba(5,2,1,0.65) 100%)" }} />
@@ -43,7 +43,7 @@ export default function PageHero({ title, subtitle, children, showLogo = true, c
           {title}
         </h1>
         {subtitle && (
-          <p className="text-amber-100/90 max-w-2xl mx-auto leading-relaxed font-medium" style={{ textShadow: "0 1px 12px rgba(0,0,0,1), 0 2px 6px rgba(0,0,0,0.9)" }}>
+          <p className="text-white max-w-2xl mx-auto leading-relaxed font-medium" style={{ textShadow: "0 1px 12px rgba(0,0,0,1), 0 2px 6px rgba(0,0,0,0.9)" }}>
             {subtitle}
           </p>
         )}
