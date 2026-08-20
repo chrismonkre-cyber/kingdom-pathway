@@ -17,7 +17,7 @@ export default function Home() {
         <div className="absolute inset-0">
           <img src={IMAGES.home} alt="" className="hidden md:block w-full h-full object-cover object-center" />
           <img src={IMAGES.homeMobile} alt="" className="md:hidden w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/45" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/40 to-black/50" />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center pt-20 pb-16">
@@ -29,10 +29,10 @@ export default function Home() {
           <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-primary mb-4 drop-shadow-lg">
             Kingdom Pathway
           </h1>
-          <p className="font-heading text-xl sm:text-2xl text-foreground/90 mb-6 italic drop-shadow-md">
+          <p className="font-heading text-xl sm:text-2xl text-white mb-6 italic drop-shadow-md">
             Find your next step. Follow the fire. Walk in the power of God.
           </p>
-          <p className="font-body text-base sm:text-lg text-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+          <p className="font-body text-base sm:text-lg text-white mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
             Wherever you are right now, God has a next step. Choose your pathway and receive
             Scripture, prayer, declaration, and Spirit-filled direction for the journey ahead.
           </p>
