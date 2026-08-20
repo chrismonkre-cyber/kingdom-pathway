@@ -111,10 +111,10 @@ export default function Journal() {
           {/* Past entries */}
           {entries.length === 0 && !writing && (
             <div className="bg-black/40 backdrop-blur-md border border-primary/15 rounded-xl p-10 text-center">
-              <p className="font-body text-foreground/60 text-lg mb-2">Your journal is waiting.</p>
-              <p className="font-body text-foreground/40 text-sm">
-                Start writing what God is placing on your heart.
-              </p>
+              <p className="font-body text-white text-lg mb-2">Your journal is waiting.</p>
+<p className="font-body text-white text-base">
+  Start writing what God is placing on your heart.
+</p>
             </div>
           )}
 
